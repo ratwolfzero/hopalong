@@ -62,6 +62,7 @@ fn hopalong(num: usize, a: f64, b: f64, c: f64, buffer: &mut [u32], scale_factor
         let yy = a - x;
         x = xx;
         y = yy;
+        y = yy;
 
         let px = ((x - min_x) * x_scale + x_offset) as usize;
         let py = ((y - min_y) * y_scale + y_offset) as usize;
