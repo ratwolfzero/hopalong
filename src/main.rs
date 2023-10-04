@@ -1,15 +1,14 @@
-
+use image::{ImageFormat, RgbImage};
 use minifb::{Key, Window, WindowOptions};
-use image::{RgbImage, ImageFormat};
-use std::env;
 use rayon::prelude::*;
+use std::env;
 
 const WIDTH: usize = 1000;
 const HEIGHT: usize = 1000;
 
-const NUMCOL:usize = COLOR_PALETTE.len();
+const NUMCOL: usize = COLOR_PALETTE.len();
 
-const COLOR_PALETTE: [(u8, u8, u8, &str);32] = [
+const COLOR_PALETTE: [(u8, u8, u8, &str); 32] = [
     (0, 0, 0, "Black"),
     (255, 0, 0, "Red"),
     (0, 255, 0, "Green"),
@@ -48,7 +47,7 @@ fn hopalong(num: usize, a: f64, b: f64, c: f64, buffer: &mut [u32], scale_factor
     let mut x = 0.0;
     let mut y = 0.0;
 
-   let (min_x, max_x, min_y, max_y) = calculate_bounds(num, a, b, c);
+    let (min_x, max_x, min_y, max_y) = calculate_bounds(num, a, b, c);
     let x_scale = (WIDTH as f64 / (max_x - min_x)) * scale_factor;
     let y_scale = (HEIGHT as f64 / (max_y - min_y)) * scale_factor;
     let x_offset = (WIDTH as f64 - (max_x - min_x) * x_scale) / 2.0;
@@ -73,20 +72,25 @@ fn hopalong(num: usize, a: f64, b: f64, c: f64, buffer: &mut [u32], scale_factor
     }
 
     // Calculate the maximum density
-    let max_density = pixel_density.par_iter().flatten().cloned().max().unwrap_or(1);
-    
+    let max_density = pixel_density
+        .par_iter()
+        .flatten()
+        .cloned()
+        .max()
+        .unwrap_or(1);
 
     // Color the pixels based on density
     for y in 0..HEIGHT {
         for x in 0..WIDTH {
             let density = pixel_density[y][x];
-            let color_index = ((density as f64 / max_density as f64) * NUMCOL as f64) as usize % NUMCOL;
+            let color_index =
+                ((density as f64 / max_density as f64) * NUMCOL as f64) as usize % NUMCOL;
             let (r, g, b, _color_name) = COLOR_PALETTE[color_index];
-            buffer[y * WIDTH + x] = 0xFF000000 | ((r as u32) << 16) | ((g as u32) << 8) | (b as u32);
+            buffer[y * WIDTH + x] =
+                0xFF000000 | ((r as u32) << 16) | ((g as u32) << 8) | (b as u32);
         }
     }
 }
-
 
 fn calculate_bounds(num: usize, a: f64, b: f64, c: f64) -> (f64, f64, f64, f64) {
     // Calculate minimum and maximum x and y values
@@ -110,8 +114,8 @@ fn calculate_bounds(num: usize, a: f64, b: f64, c: f64) -> (f64, f64, f64, f64) 
     }
 
     (min_x, max_x, max_y, min_y) //to have the same orientation as in Julia and Python
-    //(min_x, max_x, min_y, max_y)
- } 
+                                 //(min_x, max_x, min_y, max_y)
+}
 
 fn main() {
     //let num = 10000000;
@@ -120,19 +124,18 @@ fn main() {
     //let c = 2.0;
     // Parse command-line arguments
 
-
-   let args: Vec<String> = env::args().collect();
+    let args: Vec<String> = env::args().collect();
     if args.len() != 5 {
-    eprintln!("Usage: {} <a> <b> <c> <num>", args[0]);
-    return;
+        eprintln!("Usage: {} <a> <b> <c> <num>", args[0]);
+        return;
     }
 
     //let num = args[1].parse::<usize>().unwrap(); //unwrap_or(default);
-    
+
     let a = args[1].parse::<f64>().unwrap();
     let b = args[2].parse::<f64>().unwrap();
     let c = args[3].parse::<f64>().unwrap();
-    
+
     let num_str = &args[4];
     let num: usize = if let Ok(parsed) = num_str.parse::<usize>() {
         parsed
@@ -142,13 +145,13 @@ fn main() {
         eprintln!("Invalid value for 'num'");
         return;
     };
-    
+
     let scale_factor = 0.95;
 
     let mut buffer: Vec<u32> = vec![0; WIDTH * HEIGHT];
-    
-        hopalong(num, a, b, c, &mut buffer, scale_factor);  
-    
+
+    hopalong(num, a, b, c, &mut buffer, scale_factor);
+
     // Generate a unique image file name based on the parameters
     let image_name = format!("num={}_a={}_b={}_c={}.png", num_str, a, b, c); // Customize the format as needed
 
@@ -173,14 +176,18 @@ fn main() {
     }
 
     // Display the image in a window (optional)
-    let title = format!("Hopalong - num  = {}  , a = {} , b = {} , c = {}", num_str, a, b, c);
+    let title = format!(
+        "Hopalong - num  = {}  , a = {} , b = {} , c = {}",
+        num_str, a, b, c
+    );
     let mut window = Window::new(
         &title,
         WIDTH,
         HEIGHT,
-        WindowOptions{
-        resize: false,
-        ..WindowOptions::default()}
+        WindowOptions {
+            resize: false,
+            ..WindowOptions::default()
+        },
     )
     .unwrap_or_else(|e| {
         panic!("{}", e);
@@ -188,6 +195,5 @@ fn main() {
 
     while window.is_open() && !window.is_key_down(Key::Escape) {
         window.update_with_buffer(&buffer, WIDTH, HEIGHT).unwrap();
-		
     }
 }
