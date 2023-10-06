@@ -168,7 +168,7 @@ fn main() {
     }
 
     // Save the image with the generated name
-    let save_path = format!("/Users/ralf/hopalong_pictures/{}", image_name); // Specify your desired save path
+    let save_path = format!("/Users/ralf//Projects/hopalong_pictures/{}", image_name); // Specify your desired save path
     if let Err(e) = image_buffer.save_with_format(&save_path, ImageFormat::Png) {
         eprintln!("Error saving image: {}", e);
     } else {
