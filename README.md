@@ -9,10 +9,10 @@ $$ x_n+1 = {y_n-sign(x_n)*\sqrt{∣b⋅x_n−c∣}} $$
 $$ y_n+1 = {a-x_n} $$  
 
 $$
-\begin{align_}
+\begin{align}
 2x - 5y &=  8 \\
 3x + 9y &=  -12
-\end{align_}
+\end{align}
 $$
 
 The color scheme is based on the pixel density, i.e. how often a pixel of the image is hit during the iteration
