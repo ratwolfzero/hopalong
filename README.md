@@ -2,14 +2,16 @@
 
 The "Hopalong *" attractor, invented by Barry Martin at Aston University, was popularized by A.K. Dewdney in the September 1986 issue of Scientific American. In Germany, it gained further recognition through a translation titled "Hüpfer" in Spektrum der Wissenschaft.*Nicknamed by A.K. Dewdney.  
 
-This Rust program calculates and displays the "Hopalong" Attractor by iterating the following equations:  
+This Rust program calculates and displays the "Hopalong" Attractor by iterating the following interrelated equations:  
   
 $$
 \begin{align}
 x_n+1 & = y_n-sgn(x_n)\times\sqrt{∣b\times x_n−c∣} \\
 y_n+1 & = a-x_n
 \end{align}
-$$
+$$  
+
+The series of x, y coordinates is specified by an initial point xo, yo and three constants a, b, and c.
 
 The color scheme is based on the pixel density, i.e. how often a pixel of the image is hit during the iteration
 You can run the program from the command line in a terminal for example ./hopalong a b c num,  if you are using MacOs
