@@ -20,7 +20,7 @@ The number of iterations (num) can be entered as integer or in exponential form 
 Example ./hopalomg 2 1 0 1e6  
 
 also have a look to my Python version:  
-<https://de.maplesoft.com/support/help/maple/view.aspx?path=MathApps%2FHopalongAttractor>
+<https://github.com/ratwolfzero/hopalong_python>
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 
