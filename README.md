@@ -12,14 +12,12 @@ y_n+1 & = a-x_n
 $$
 
 The color scheme is based on the pixel density, i.e. how often a pixel of the image is hit during the iteration
-
 You can run the program from the command line in a terminal for example ./hopalong a b c num,  if you are using MacOs
-
 The number of iterations (num) can be entered as integer or in exponential form such as 1e6
 
 Example ./hopalomg 2 1 0 1e6  
 
-also have a look to my Python version:  
+Also have a look to my Python version:  
 <https://github.com/ratwolfzero/hopalong_python>
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
