@@ -17,7 +17,7 @@ You can run the program from the command line in a terminal for example ./hopalo
 
 The number of iterations (num) can be entered as integer or in exponential form such as 1e6
 
-Example ./hopalomg 2 1 0 1e6  
+Example ./hopalomg 2 1 0 1e6
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 
