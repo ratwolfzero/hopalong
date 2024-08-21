@@ -3,10 +3,12 @@
 The "Hopalong *" attractor, invented by Barry Martin at Aston University, was popularized by A.K. Dewdney in the September 1986 issue of Scientific American. In Germany, it gained further recognition through a translation titled "Hüpfer" in Spektrum der Wissenschaft.*Nicknamed by A.K. Dewdney.
 
 This program can calculate and display the "Hopalong attractor"  
-
-$$ x_n+1 = {y_n-sign(x_n)*\sqrt{∣b⋅x_n−c∣}} $$
-
-$$ y_n+1 = {a-x_n} $$  
+$$
+\begin{align}
+x_n+1 = {y_n-sign(x_n)*\sqrt{∣b⋅x_n−c∣}} \\
+y_n+1 = {a-x_n} 
+\end{align}
+$$
 
 $$
 \begin{align}
