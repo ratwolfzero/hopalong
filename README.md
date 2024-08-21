@@ -4,11 +4,13 @@ The "Hopalong *" attractor, invented by Barry Martin at Aston University, was po
 
 This program can calculate and display the "Hopalong attractor"  
 
-\begin{align*}
-x_n+1 = {y_n-sign(x_n)*\sqrt{∣b⋅x_n−c∣}}
 
-y_n+1 = {a-x_n}
-\end{align*}
+\begin{aligned}
+$$ x_n+1 = {y_n-sign(x_n)*\sqrt{∣b⋅x_n−c∣}} $$
+
+$$ y_n+1 = {a-x_n} $$
+\end{aligned}
+
 The color scheme is based on the pixel density, i.e. how often a pixel of the image is hit during the iteration
 
 You can run the program from the command line in a terminal for example ./hopalong a b c num,  if you are using MacOs
