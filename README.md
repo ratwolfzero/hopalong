@@ -2,15 +2,11 @@
 
 The "Hopalong *" attractor, invented by Barry Martin at Aston University, was popularized by A.K. Dewdney in the September 1986 issue of Scientific American. In Germany, it gained further recognition through a translation titled "Hüpfer" in Spektrum der Wissenschaft.*Nicknamed by A.K. Dewdney.
 
-This program can calculate and display the "Hopalong attractor"
+This program can calculate and display the "Hopalong attractor"  
 
-$$
-\begin{split}
-& x_n+1 = {y_n-sign(x_n)*\sqrt{∣b⋅x_n−c∣}}
+$$\ x_n+1 = {y_n-sign(x_n)*\sqrt{∣b⋅x_n−c∣}} $$
 
- & y_n+1 = {a-x_n}
-\end{split}
-$$
+$$\ y_n+1 = {a-x_n} $$
 
 The color scheme is based on the pixel density, i.e. how often a pixel of the image is hit during the iteration
 
