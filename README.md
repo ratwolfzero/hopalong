@@ -6,8 +6,8 @@ This program can calculate and display the "Hopalong attractor"
 
 $$
 \begin{align}
-x_n+1 & =  y_n-sign(x_n)*\sqrt{∣b⋅x_n−c∣} \\
-y_n+1 & =  a-x_n
+x_n+1 & = y_n-sign(x_n)*\sqrt{∣b⋅x_n−c∣} \\
+y_n+1 & = a-x_n
 \end{align}
 $$
 
