@@ -4,7 +4,7 @@ The "Hopalong *" attractor, invented by Barry Martin at Aston University, was po
 
 This program can calculate and display the "Hopalong attractor"
 
-$$ xk+1 = {yk*sign(xk)*sqrt{∣b⋅xk−c∣∣}} $$
+$$ xk+1 = {yk*sign(xk)* \ sqrt{∣b⋅xk−c∣∣}} $$
 
 The color scheme is based on the pixel density, i.e. how often a pixel of the image is hit during the iteration
 
