@@ -11,8 +11,7 @@ y_n+1 & = a-x_n &(2)
 \end{align}
 $$
 
-The sequence of (x<sub>1</sub>, y<sub>1</sub>), (x<sub>2</sub>, y<sub>2</sub>), ..., (x<sub>n</sub>, y<sub>n</sub>)  coordinates is specified by an initial point (x<sub>0</sub>, y<sub>0</sub>) and   
-three constants a, b, and c. 
+The sequence of (x1, y1), (x2, y2), ... (xn, yn) coordinates is specified by an initial point (x0, y0) and three constants a, b, and c.
 
 The color scheme is based on the pixel density, i.e. how often a pixel of the image is hit during the iteration
 You can run the program from the command line in a terminal for example ./hopalong a b c num,  if you are using MacOs
