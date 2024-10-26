@@ -1,17 +1,22 @@
 # hopalong
 
-The "Hopalong *" attractor, invented by Barry Martin at Aston University, was popularized by A.K. Dewdney in the September 1986 issue of Scientific American. In Germany, it gained further recognition through a translation titled "Hüpfer" in Spektrum der Wissenschaft.*Nicknamed by A.K. Dewdney.  
+The "Hopalong" attractor<top>*<top>, invented by Barry Martin of Aston University in Birmingham, England, was popularized by A.K. Dewdney in the September 1986 issue of Scientific American. In Germany, it gained further recognition through a translation titled "Hüpfer" in Spektrum der Wissenschaft.  
+<sub>*Nicknamed by A.K. Dewdney.</sub>
 
-This Rust program calculates and plots the “hopalong” attractor by iterating the following system of recursive equations (1) and (2): 
+This Python program calculates and displays the “hopalong” attractor by iterating the following system of recursive functions (1) and (2):
 
 $$
 \begin{align}
-x_n+1 & = y_n-sgn(x_n)\times\sqrt{∣b\times x_n−c∣} &(1) \\
-y_n+1 & = a-x_n &(2)
+x_n+1\space=&y_n-sgn(x_n)\times\sqrt{∣b\times x_n−c∣}&(1) \\
+y_n+1\space=&a-x_n&(2)
 \end{align}
 $$
 
-The sequence of (x1, y1), (x2, y2), ... (xn, yn) coordinates is specified by an initial point (x0, y0) and three constants a, b, and c.
+Where:
+
+- x<sub>n</sub> and y<sub>n</sub> represent the coordinates at the nth iteration.
+- a, b, c are user defined parameters that shape the attractor
+- The sequence starts from an initial point (x<sub>0</sub>, y<sub>0</sub>)
 
 The color scheme is based on the pixel density, i.e. how often a pixel of the image is hit during the iteration
 You can run the program from the command line in a terminal for example ./hopalong a b c num,  if you are using MacOs
