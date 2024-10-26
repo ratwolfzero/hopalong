@@ -16,7 +16,7 @@ Where:
 
 - x<sub>n</sub> and y<sub>n</sub> represent the coordinates at the nth iteration.
 - a, b, c are user defined parameters that shape the attractor
-- The sequence starts from an initial point (x<sub>0</sub>, y<sub>0</sub>)
+- The sequence starts from an initial point (x<sub>0</sub> , y<sub>0</sub>) = (0 , 0)
 
 The color scheme is based on the pixel density, i.e. how often a pixel of the image is hit during the iteration
 You can run the program from the command line in a terminal for example ./hopalong a b c num,  if you are using MacOs
