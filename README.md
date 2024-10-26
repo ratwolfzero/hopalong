@@ -24,7 +24,7 @@ The number of iterations (num) can be entered as integer or in exponential form 
 
 Example ./hopalomg 2 1 0 1e6  
 
-Also have a look to my Python version:  
+Also have a look to my Python version where you can also find further explanations about pixel density:  
 <https://github.com/ratwolfzero/hopalong_python>
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
