@@ -15,8 +15,9 @@ $$
 Where:
 
 - The sequence starts from the initial point (x<sub>0</sub> , y<sub>0</sub>) = (0 , 0)
-- x<sub>n</sub> and y<sub>n</sub> represent the coordinates at the n-th iteration.
-- a, b and c are parameters influencing the attracto's dynamics.
+- x<sub>n</sub> and y<sub>n</sub> represent the coordinates at the n-th iteration
+- a, b and c are parameters influencing the attracto's dynamics
+- sgn is the sign (signum) function
 
 The color scheme is based on the pixel density, i.e. how often a pixel of the image is hit during the iteration  
 
