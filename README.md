@@ -19,17 +19,19 @@ Where:
 - a, b and c are parameters influencing the attracto's dynamics
 - sgn is the sign (signum) function
 
-The color scheme is based on the pixel density, i.e. how often a pixel of the image is hit during the iteration  
+The color scheme is based on the pixel density, i.e. how often a pixel of the image is hit during the iteration.
 
-Implementation of Signum function in Rust: (https://docs.rs/num-traits/latest/num_traits/sign/fn.signum.html)  
+For further explanations on ` Hopalong` attractor and pixel density, see my Python version::  
+<https://github.com/ratwolfzero/hopalong_python>
+
+For implementation of Signum function in Rust see: (https://docs.rs/num-traits/latest/num_traits/sign/fn.signum.html)  
 
 You can run the program from the command line in a terminal for example ./hopalong a b c num,  if you are using MacOs
 The number of iterations (num) can be entered as integer or in exponential form such as 1e6
 
 Example ./hopalomg 2 1 0 1e6  
 
-For further explanations on pixel density, see my Python version::  
-<https://github.com/ratwolfzero/hopalong_python>
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 
