@@ -24,7 +24,8 @@ The color scheme is based on the pixel density, i.e. how often a pixel of the im
 For further explanations on ` Hopalong` attractor and pixel density, see my Python version::  
 <https://github.com/ratwolfzero/hopalong_python>
 
-For implementation of Signum function in Rust see: (https://docs.rs/num-traits/latest/num_traits/sign/fn.signum.html)  
+For implementation of Signum function in Rust see:  
+(https://docs.rs/num-traits/latest/num_traits/sign/fn.signum.html)  
 
 You can run the program from the command line in a terminal for example ./hopalong a b c num,  if you are using MacOs
 The number of iterations (num) can be entered as integer or in exponential form such as 1e6
