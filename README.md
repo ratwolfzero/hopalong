@@ -30,7 +30,9 @@ The color scheme is based on the pixel density, i.e. how often a pixel of the im
 - <https://docs.rs/num-traits/latest/num_traits/sign/fn.signum.html>
 
 You can run the program from the command line in a terminal for example ./hopalong a b c num,  if you are using MacOs
-The number of iterations (num) can be entered as integer or in exponential form such as 1e6
+The number of iterations (num) can be entered as integer or in exponential form such as 1e6  
+If you are using a mac with apple silicon you should be able to use the executable in the `Binary` folder.  
+The binary was Compiled on a Mac Mini with M2 processor.
 
 Example ./hopalomg 2 1 0 1e6  
 
