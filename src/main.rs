@@ -8,7 +8,7 @@ const HEIGHT: usize = 1000;
 
 const NUMCOL: usize = COLOR_PALETTE.len();
 
-const COLOR_PALETTE: [(u8, u8, u8, &str); 32] = [
+const COLOR_PALETTE: [(u8, u8, u8, &str); 28] = [
     (0, 0, 0, "Black"),
     (28, 0, 0, "Dark Red"),
     (56, 0, 0, "Darker Red"),
@@ -37,10 +37,7 @@ const COLOR_PALETTE: [(u8, u8, u8, &str); 32] = [
     (255, 255, 198, "Almost White"),
     (255, 255, 226, "Almost White"),
     (255, 255, 255, "White"),
-    (255, 255, 255, "White"),
-    (255, 255, 255, "White"),
-    (255, 255, 255, "White"),
-    (255, 255, 255, "White"),
+    
 ];
 
 fn hopalong(num: usize, a: f64, b: f64, c: f64, buffer: &mut [u32], scale_factor: f64) {
