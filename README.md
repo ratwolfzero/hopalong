@@ -1,6 +1,6 @@
 # hopalong
 
-![Example Attractor Image](./examples/num=200000000_a=-2_b=-0.33_c=0.01.png)
+![Example Attractor Image](./Examples/num=200000000_a=-2_b=-0.33_c=0.01.png)
 
 The "Hopalong" attractor<top>*<top>, invented by Barry Martin of Aston University in Birmingham, England, was popularized by A.K. Dewdney in the September 1986 issue of Scientific American. In Germany, it gained further recognition through a translation titled "Hüpfer" in Spektrum der Wissenschaft.  
 <sub>*Nicknamed by A.K. Dewdney.</sub>
