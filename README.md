@@ -31,12 +31,11 @@ For information on implementing the Signum function in Rust, see:
   
 <https://docs.rs/num-traits/latest/num_traits/sign/fn.signum.html>
 
-You can run this program from the command line in a terminal, for example ./hopalong a b c num,  
-if you are using MacOs.  
+You can run this program from the command line in a terminal.
 
 The number of iterations (num) can be entered as integer or in exponential form such as 1e6.  
 
-Example: ./hopalong -2 -0.33 0.01 2e8
+Example: ./hopalong -2 -0.33 0.01 2e8 (MacOS)
 
 If you are using a mac with apple silicon you should be able to use the executable in the 'Binary' folder.  
 
