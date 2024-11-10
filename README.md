@@ -23,7 +23,7 @@ Where:
 
 The color scheme is based on the pixel density, i.e. how often a pixel of the image is hit during the iteration.
 
-- Check out my Python version for more detailed information on pixel density:  
+- Check out my Python version for more detailed information:  
 <https://github.com/ratwolfzero/hopalong_python>
 
 - For information on implementing the Signum function in Rust, see:  
