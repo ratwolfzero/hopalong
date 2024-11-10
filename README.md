@@ -23,10 +23,13 @@ Where:
 
 The color scheme is based on the pixel density, i.e. how often a pixel of the image is hit during the iteration.
 
-- Check out my Python version for more detailed information:  
-<https://github.com/ratwolfzero/hopalong_python>
+- For more information on “pixel density”, i.e. displaying the attractor as a density map  
+similar to a probability density function, see my Python version.
 
-- For information on implementing the Signum function in Rust, see:  
+- <https://github.com/ratwolfzero/hopalong_python>
+
+- For information on implementing the Signum function in Rust, see:
+  
 - <https://docs.rs/num-traits/latest/num_traits/sign/fn.signum.html>
 
 You can run this program from the command line in a terminal, for example ./hopalong a b c num,  
