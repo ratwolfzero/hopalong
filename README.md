@@ -8,11 +8,14 @@ The "Hopalong" attractor<top>*<top>, invented by Barry Martin of Aston Universit
 This Rust program computes and visualizes the “hopalong” attractor by iterating the following recursive functions:
 
 $$
+\large
 \begin{cases}
-x_{n+1} = y_n - \text{sgn}(x_n) \times \sqrt{|b \times x_n - c|} \\
+x_{n+1} = y_n - \text{sgn}(x_n) \sqrt{\lvert b x_n - c \rvert} \\
 y_{n+1} = a - x_n
 \end{cases}
+\large
 $$
+
 
 Where:
 
