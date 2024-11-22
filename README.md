@@ -59,7 +59,7 @@ The calculated image should be displayed but there will be an error regarding sa
 ## References
 
 1. **J. Lansdown and R. A. Earnshaw (eds.)**, *Computers in Art, Design and Animation*. New York: Springer-Verlag, 1989.  
-   ISBN-13: 978-1-4612-8868-8, e-ISBN-13: 978-1-4612-4538-4.  
+   e-ISBN-13: 978-1-4612-4538-4.  
 
 2. **Barry Martin**, "Graphic Potential of Recursive Functions," in Computers in Art, Design and Animation [1], pp. 109–129. 
 
