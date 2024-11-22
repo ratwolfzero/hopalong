@@ -4,8 +4,10 @@
 
 ## Abstract
 
-The "Hopalong"<top>*<top> attractor, authored by Barry Martin of Aston University in Birmingham, England, was popularized by A.K. Dewdney in the September 1986 issue of Scientific American. In Germany, it gained further recognition through a translation titled "HÜPFER" in Spektrum der Wissenschaft.  
-<sub>*Nicknamed by A.K. Dewdney.</sub>
+The "Hopalong"<top>*<top> attractor, authored by Barry Martin of Aston University in Birmingham, England, was popularized by A.K. Dewdney in the September 1986 issue of Scientific American [3]. In Germany, it gained further recognition through a translation titled "HÜPFER" in Spektrum der Wissenschaft [3].  
+<sub>*Nicknamed by A.K. Dewdney.</sub>  
+
+Barry Martin’s work on graphic potential of recursive functions, detailed in Computers in Art, Design and Animation [1], [2], played a significant role in the development of these concepts.
 
 This Rust program computes and visualizes the “hopalong” attractor by iterating the following recursive functions:
 
@@ -17,7 +19,6 @@ y_{n+1} = a - x_n
 \end{cases}
 \large
 $$
-
 
 Where:
 
@@ -59,16 +60,10 @@ The calculated image should be displayed but there will be an error regarding sa
 
 ## References
 
-Computers in Art, Design and Animation (J. Landsdown and R. A. Earnshaw, eds.),  
-New York: Springer–Verlag, 1989.
+1. **J. Lansdown and R. A. Earnshaw (eds.)**, *Computers in Art, Design and Animation*. New York: Springer-Verlag, 1989.  
+   ISBN-13: 978-1-4612-8868-8, e-ISBN-13: 978-1-4612-4538-4.  
 
-Barry Martin, "Graphic Potential of Recursive Functions" in Computers in Art, Design and Animation pp. 109–129.
+2. **Barry Martin**, "Graphic Potential of Recursive Functions," in Computers in Art, Design and Animation [1], pp. 109–129. 
 
-ISBN-13: 978-1-4612-8868-8,  e-ISBN-13: 978-1-4612-4538-4
-
-----------------------------------------------------------------------------------------------------------------------------------------------------
-
-A.K. Dewdney, Program "HÜPFER" in Spektrum der Wissenschaft "Computer Kurzweil", 1988.  
-(German version of Scientific American)
-
-ISBN-10: 3922508502, ISBN-13: 978-3922508502
+3. **A.K. Dewdney**, Program "HÜPFER," in *Spektrum der Wissenschaft: Computer Kurzweil*. Spektrum der Wissenschaft Verlagsgesellschaft mbH & Co., 1988. (German version of *Scientific American*).  
+   ISBN-10: 3922508502, ISBN-13: 978-3922508502.
