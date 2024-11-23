@@ -4,8 +4,12 @@
 
 ## Abstract
 
+### Historical Background and Context
+
 The "Hopalong"<top>*<top> attractor, authored by Barry Martin of Aston University in Birmingham, England [2], was popularized by A.K. Dewdney in the September 1986 issue of Scientific American. In Germany, it gained further recognition through a translation titled "HÜPFER" in Spektrum der Wissenschaft [3].  
 <sub>*Nicknamed by A.K. Dewdney.</sub>  
+
+### Mathematical Formulation of the Attractor
 
 This Rust program computes and visualizes the “hopalong” attractor by iterating the following recursive functions:
 
@@ -24,6 +28,8 @@ Where:
 - x<sub>n</sub> and y<sub>n</sub> represent the coordinates at the n-th iteration
 - a, b and c are parameters influencing the attracto's dynamics
 - sgn is the sign (signum) function
+
+### Features and Further Information
 
 The color scheme is based on the pixel density, i.e. how often a pixel of the image is hit during the iteration.
 
