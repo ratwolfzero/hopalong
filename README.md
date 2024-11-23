@@ -26,14 +26,14 @@ Where:
 
 - The sequence starts from the initial point (x<sub>0</sub> , y<sub>0</sub>) = (0 , 0)
 - x<sub>n</sub> and y<sub>n</sub> represent the coordinates at the n-th iteration
-- a, b and c are parameters influencing the attracto's dynamics
+- a, b, and c are parameters influencing the attractor's dynamics
 - sgn is the sign (signum) function
 
 ### Features and Further Information
 
 The color scheme is based on the pixel density, i.e. how often a pixel of the image is hit during the iteration.
 
-For more information on “pixel density”, i.e. displaying the attractor as a density map similar to a probability density function, see my Python version.
+For more information on “pixel density” i.e., displaying the attractor as a density map similar to a probability density function, see my Python version.
 
 <https://github.com/ratwolfzero/hopalong_python>
 
@@ -47,7 +47,7 @@ The number of iterations (num) can be entered as integer or in exponential form 
 
 Example: ./hopalong -2 -0.33 0.01 2e8 (MacOS)
 
-If you are using a mac with apple silicon you should be able to use the executable in the 'Binary' folder.  
+If you are using a Mac with Apple Silicon you should be able to use the executable in the 'Binary' folder.  
 
 The binary was compiled on a Mac Mini with M2 processor.  
 The calculated image should be displayed but there will be an error regarding saving the image.
