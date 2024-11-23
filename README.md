@@ -6,7 +6,7 @@
 
 ### Historical Background and Context
 
-The "Hopalong"<top>*<top> attractor, authored by Barry Martin of Aston University in Birmingham, England [2], was popularized by A.K. Dewdney in the September 1986 issue of Scientific American. In Germany, it gained further recognition through a translation titled "HÜPFER" in Spektrum der Wissenschaft [3].  
+The "Hopalong"<top>*<top> attractor, authored by Barry Martin of Aston University in Birmingham, England [2], was popularized by A.K. Dewdney in the September 1986 issue of *Scientific American*. In Germany, it gained further recognition through a translation titled "HÜPFER" in *Spektrum der Wissenschaft* [3].  
 <sub>*Nicknamed by A.K. Dewdney.</sub>  
 
 ### Mathematical Formulation of the Attractor
@@ -70,7 +70,7 @@ The calculated image should be displayed but there will be an error regarding sa
  e-ISBN-13: 978-1-4612-4538-4.  
 
 [2]  
-**Barry Martin**, "Graphic Potential of Recursive Functions," in Computers in Art, Design and Animation [1],  
+**Barry Martin**, "Graphic Potential of Recursive Functions," in *Computers in Art, Design and Animation* [1],  
 pp. 109–129.
 
 [3]  
