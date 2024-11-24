@@ -4,12 +4,12 @@
 
 ## Abstract
 
-### Historical Background and Context
+### Historical Context
 
 The "Hopalong"<top>*<top> attractor, authored by Barry Martin of Aston University in Birmingham, England [2], was popularized by A.K. Dewdney in the September 1986 issue of *Scientific American*. In Germany, it gained further recognition through a translation titled "HÜPFER" in *Spektrum der Wissenschaft* [3].  
 <sub>*Nicknamed by A.K. Dewdney.</sub>  
 
-### Mathematical Formulation of the Attractor
+### The Hopalong Equations
 
 This Rust program computes and visualizes the “hopalong” attractor by iterating the following recursive functions:
 
