@@ -9,9 +9,9 @@
 The "Hopalong"<top>*<top> attractor, authored by Barry Martin of Aston University in Birmingham, England [2], was popularized by A.K. Dewdney in the September 1986 issue of *Scientific American*. In Germany, it gained further recognition through a translation titled "HÜPFER" in *Spektrum der Wissenschaft* [3].  
 <sub>*Nicknamed by A.K. Dewdney.</sub>  
 
-### The Hopalong Attractor Equations
+### The Hopalong Attractor Functions
 
-This Rust program computes and visualizes the “hopalong” attractor by iterating the following recursive functions:
+This Rust program computes and visualizes the “hopalong” attractor by iterating the following system ofrecursive functions:
 
 $$
 \large
@@ -24,10 +24,10 @@ $$
 
 Where:
 
-- The sequence starts from the initial point (x<sub>0</sub> , y<sub>0</sub>) = (0 , 0)
-- x<sub>n</sub> and y<sub>n</sub> represent the coordinates at the n-th iteration
-- a, b, and c are parameters influencing the attractor's dynamics
-- sgn is the sign (signum) function
+- The sequence starts from the initial point (*x<sub>0</sub> , y<sub>0</sub>*) = (0 , 0)
+- *x<sub>n</sub>* and *y<sub>n</sub>* represent the coordinates at the n-th iteration
+- *a*, *b*, and *c* are parameters influencing the attractor's dynamics
+- *sgn* is the *signum* function
 
 ### Features and Further Information
 
