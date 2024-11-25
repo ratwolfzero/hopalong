@@ -11,7 +11,7 @@ The "Hopalong"<top>*<top> attractor, authored by Barry Martin of Aston Universit
 
 ### The Hopalong Attractor Functions
 
-This Rust program computes and visualizes the “hopalong” attractor by iterating the following system ofrecursive functions:
+This Rust program computes and visualizes the “hopalong” attractor by iterating the following system of recursive functions:
 
 $$
 \large
