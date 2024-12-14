@@ -59,8 +59,8 @@ fn hopalong(num: usize, a: f64, b: f64, c: f64, buffer: &mut [u32], scale_factor
         x = xx;
         y = yy;
 
-        let px = ((x - min_x) * x_scale + x_offset) as usize;
-        let py = ((y - min_y) * y_scale + y_offset) as usize;
+        let px = ((x - min_x) * x_scale + x_offset).round() as usize;
+        let py = ((y - min_y) * y_scale + y_offset).round() as usize;
 
         if px < WIDTH && py < HEIGHT {
             // Increment the pixel density for the current pixel
