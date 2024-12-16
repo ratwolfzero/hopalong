@@ -37,7 +37,7 @@ For more information in general and about “pixel density”, i.e. displaying t
 
 <https://github.com/ratwolfzero/hopalong_python>
 
-For information on implementing the Signum function in Rust, see:
+For information on the implementation of the Signum function in Rust, see:
   
 <https://docs.rs/num-traits/latest/num_traits/sign/fn.signum.html>
 
