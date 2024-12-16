@@ -33,7 +33,7 @@ Where:
 
 The color scheme is based on the pixel density, i.e. how often a pixel of the image is hit during the iteration.
 
-For more information on “pixel density” i.e., displaying the attractor as a density map similar to a probability density function, see my Python version.
+For more information in general and about “pixel density”, i.e. displaying the attractor as a density heatmap, see my Python versions repository.
 
 <https://github.com/ratwolfzero/hopalong_python>
 
