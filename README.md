@@ -3,6 +3,11 @@
 
 ![Example Attractor Image](./Examples/num=200000000_a=-2_b=-0.33_c=0.01.png)
 
+> **Despite its common name, Hopalong is not an attractor.**
+> The map preserves area (Jacobian determinant 1), so nothing contracts onto an attracting set; the familiar picture is
+> the footprint of a single orbit from (0, 0), and other starting points can give different pictures.
+> For the regular and chaotic regions behind this, see [Hopalong Phase Space](https://github.com/ratwolfzero/hopalong_phase_space).
+
 ## Abstract
 
 ### Historical Context
