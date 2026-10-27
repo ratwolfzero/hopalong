@@ -38,9 +38,13 @@ Where:
 - The image is 1000 × 1000 pixels. The orbit is scaled to fill 95 % of the canvas and centered; the y axis has the
   same orientation as in the Julia and Python versions.
 - The color scheme is based on the pixel density, i.e. how often a pixel of the image is hit during the iteration.
-  The hit count of each pixel is divided by the highest hit count of the image and mapped linearly onto a
-  28-step palette running from black through dark red, red, orange and yellow to white. The most frequently hit
-  pixel is therefore always white.
+  The hit counts are mapped, relative to the highest hit count of the image, onto a 28-step palette running from
+  black through dark red, red, orange and yellow to white, so the most frequently hit pixel is always white.
+  Three mappings are available: `linear` (default; proportional to the hit count), `sqrt` (square root, lifts
+  rarely visited regions) and `log` (logarithm, the strongest lift, shows even single hits).
+- The orbit is scaled so that its full extent fits the canvas. For some parameter sets (for example
+  `-2 -0.33 0.01`) the orbit slowly spreads out, so its extent keeps growing with `num` and the picture zooms out
+  accordingly. With `linear` the sparsely visited outer regions are almost black; `sqrt` or `log` makes them visible.
 - The calculation uses all available CPU cores (see [Implementation Notes](#implementation-notes)).
 
 For more information in general and about “pixel density”, i.e. displaying the attractor as a density heatmap, see my Python versions repository.
@@ -52,14 +56,15 @@ For more information in general and about “pixel density”, i.e. displaying t
 You can run this program from the command line in a terminal:
 
 ```text
-./hopalong <a> <b> <c> <num>
+./hopalong <a> <b> <c> <num> [linear|sqrt|log]
 ```
 
-Example (macOS): `./hopalong -2 -0.33 0.01 2e8`
+Examples (macOS): `./hopalong -2 -0.33 0.01 2e8` and `./hopalong -2 -0.33 0.01 2e8 sqrt`
 
 - `a`, `b`, `c` are the parameters of the attractor (any floating-point numbers, negative values are fine).
 - `num` is the number of iterations. It can be entered as an integer or in exponential form such as `1e6`, must be
   at least 1, and has no practical upper limit. The run time grows linearly with `num`.
+- `linear`, `sqrt` or `log` (optional) selects the color scale described above; the default is `linear`.
 
 While the program is running it prints the time spent in the two calculation passes (see below). Afterwards the
 image is shown in a window; press <kbd>Esc</kbd> or close the window to quit.
@@ -67,7 +72,9 @@ image is shown in a window; press <kbd>Esc</kbd> or close the window to quit.
 ### Saving the image
 
 The image is also saved as a PNG named `num=<num>_a=<a>_b=<b>_c=<c>.png` (with `num` as typed, e.g.
-`num=2e8_a=-2_b=-0.33_c=0.01.png`) in the folder given by the constant `OUTPUT_DIR` near the top of `src/main.rs`:
+`num=2e8_a=-2_b=-0.33_c=0.01.png`; for `sqrt` and `log` the scale is appended, e.g.
+`num=2e8_a=-2_b=-0.33_c=0.01_sqrt.png`) in the folder given by the constant `OUTPUT_DIR` near the top of
+`src/main.rs`:
 
 ```rust
 const OUTPUT_DIR: &str = "/Users/ralf/Projects/hopalong_pictures";

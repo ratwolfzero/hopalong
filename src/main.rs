@@ -256,19 +256,62 @@ fn density_histogram(
 // Colouring and output
 // ---------------------------------------------------------------------------------------------
 
-fn colorize(hist: &[u64], buffer: &mut [u32]) {
+/// How a pixel's hit count is mapped onto the palette.
+#[derive(Clone, Copy, PartialEq)]
+enum Scale {
+    /// Proportional to the hit count. Rarely visited regions end up black.
+    Linear,
+    /// Square root of the relative hit count: lifts sparse regions.
+    Sqrt,
+    /// Logarithm of the hit count: strongest lift, shows even single hits.
+    Log,
+}
+
+impl Scale {
+    fn parse(s: &str) -> Result<Self, String> {
+        match s.to_ascii_lowercase().as_str() {
+            "linear" => Ok(Scale::Linear),
+            "sqrt" => Ok(Scale::Sqrt),
+            "log" => Ok(Scale::Log),
+            _ => Err(format!("Invalid colour scale '{s}' (use linear, sqrt or log)")),
+        }
+    }
+
+    fn name(self) -> &'static str {
+        match self {
+            Scale::Linear => "linear",
+            Scale::Sqrt => "sqrt",
+            Scale::Log => "log",
+        }
+    }
+
+    /// Relative brightness 0.0..=1.0 for a pixel with `d` hits when the busiest pixel has `max`.
+    #[inline]
+    fn level(self, d: u64, max: u64) -> f64 {
+        match self {
+            Scale::Linear => d as f64 / max as f64,
+            Scale::Sqrt => (d as f64 / max as f64).sqrt(),
+            Scale::Log => (d as f64).ln_1p() / (max as f64).ln_1p(),
+        }
+    }
+}
+
+fn colorize(hist: &[u64], scale: Scale, buffer: &mut [u32]) {
     let packed: [u32; NUMCOL] = std::array::from_fn(|i| {
         let (r, g, b, _name) = COLOR_PALETTE[i];
         0xFF000000 | ((r as u32) << 16) | ((g as u32) << 8) | (b as u32)
     });
     let max_density = hist.iter().copied().max().unwrap_or(1).max(1);
 
-    for (out, &d) in buffer.iter_mut().zip(hist) {
-        // `.min(NUMCOL - 1)` instead of `% NUMCOL`: the densest pixel must map to the last
-        // palette entry (white), not wrap around to index 0 (black).
-        let idx = (((d as f64 / max_density as f64) * NUMCOL as f64) as usize).min(NUMCOL - 1);
-        *out = packed[idx];
-    }
+    buffer
+        .par_iter_mut()
+        .zip(hist.par_iter())
+        .for_each(|(out, &d)| {
+            // `.min(NUMCOL - 1)` instead of `% NUMCOL`: the densest pixel must map to the last
+            // palette entry (white), not wrap around to index 0 (black).
+            let idx = ((scale.level(d, max_density) * NUMCOL as f64) as usize).min(NUMCOL - 1);
+            *out = packed[idx];
+        });
 }
 
 fn save_png(buffer: &[u32], path: &Path) -> Result<(), image::ImageError> {
@@ -306,20 +349,24 @@ fn parse_num(s: &str) -> Result<usize, String> {
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    if args.len() != 5 {
-        eprintln!("Usage: {} <a> <b> <c> <num>", args[0]);
+    if args.len() != 5 && args.len() != 6 {
+        eprintln!("Usage: {} <a> <b> <c> <num> [linear|sqrt|log]", args[0]);
         return;
     }
 
-    let parsed = (|| -> Result<(Params, usize), String> {
+    let parsed = (|| -> Result<(Params, usize, Scale), String> {
         let p = Params {
             a: parse_f64(&args[1], "a")?,
             b: parse_f64(&args[2], "b")?,
             c: parse_f64(&args[3], "c")?,
         };
-        Ok((p, parse_num(&args[4])?))
+        let scale = match args.get(5) {
+            Some(s) => Scale::parse(s)?,
+            None => Scale::Linear,
+        };
+        Ok((p, parse_num(&args[4])?, scale))
     })();
-    let (p, num) = match parsed {
+    let (p, num, scale) = match parsed {
         Ok(v) => v,
         Err(e) => {
             eprintln!("{e}");
@@ -344,7 +391,7 @@ fn main() {
     let t2 = Instant::now();
 
     let mut buffer = vec![0u32; WIDTH * HEIGHT];
-    colorize(&hist, &mut buffer);
+    colorize(&hist, scale, &mut buffer);
     println!(
         "pass 1 (bounds): {:.1?}, pass 2 (plot): {:.1?}, colour: {:.1?}",
         t1 - t0,
@@ -353,7 +400,13 @@ fn main() {
     );
 
     // --- save ----------------------------------------------------------------------------
-    let image_name = format!("num={}_a={}_b={}_c={}.png", num_str, p.a, p.b, p.c);
+    // The default (linear) scale keeps the plain name; other scales get a suffix.
+    let suffix = if scale == Scale::Linear {
+        String::new()
+    } else {
+        format!("_{}", scale.name())
+    };
+    let image_name = format!("num={}_a={}_b={}_c={}{}.png", num_str, p.a, p.b, p.c, suffix);
     if let Err(e) = std::fs::create_dir_all(OUTPUT_DIR) {
         eprintln!("Could not create {OUTPUT_DIR}: {e}");
     }
@@ -364,9 +417,14 @@ fn main() {
     }
 
     // --- display (optional) --------------------------------------------------------------
+    let scale_note = if scale == Scale::Linear {
+        String::new()
+    } else {
+        format!(" , scale = {}", scale.name())
+    };
     let title = format!(
-        "Hopalong - num  = {}  , a = {} , b = {} , c = {}",
-        num_str, p.a, p.b, p.c
+        "Hopalong - num  = {}  , a = {} , b = {} , c = {}{}",
+        num_str, p.a, p.b, p.c, scale_note
     );
     match Window::new(
         &title,
