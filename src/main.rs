@@ -17,6 +17,10 @@ const LANES: usize = 4;
 /// Below this many points the parallel machinery isn't worth its set-up cost.
 const PARALLEL_THRESHOLD: usize = 1_000_000;
 
+/// Upper bound on the points plotted by one task, so that its `u32` pixel counters cannot
+/// overflow. The per-task histograms are summed into `u64`, so `num` itself is not limited.
+const MAX_POINTS_PER_TASK: usize = 1 << 31;
+
 const NUMCOL: usize = COLOR_PALETTE.len();
 
 const COLOR_PALETTE: [(u8, u8, u8, &str); 28] = [
@@ -214,24 +218,31 @@ fn plot_lanes(
     }
 }
 
-/// Each rayon task fills its own histogram; the histograms are summed at the end.
+/// Each rayon task fills its own (cache-friendly) `u32` histogram, which is then added into a
+/// `u64` accumulator. `tasks` is chosen so that no task plots more than `MAX_POINTS_PER_TASK`
+/// points, which keeps the `u32` counters safe for any `num`.
 fn density_histogram(
     tasks: usize,
     plan: &Plan,
     checkpoints: &[(f64, f64)],
     p: Params,
     m: &Mapping,
-) -> Vec<u32> {
+) -> Vec<u64> {
     (0..tasks)
         .into_par_iter()
+        .map(|t| {
+            let start: [(f64, f64); LANES] =
+                checkpoints[t * LANES..(t + 1) * LANES].try_into().unwrap();
+            let tail = if t + 1 == tasks { plan.rem } else { 0 };
+            let mut hist = vec![0u32; WIDTH * HEIGHT];
+            plot_lanes(start, plan.seg, tail, p, m, &mut hist);
+            hist
+        })
         .fold(
-            || vec![0u32; WIDTH * HEIGHT],
-            |mut hist, t| {
-                let start: [(f64, f64); LANES] =
-                    checkpoints[t * LANES..(t + 1) * LANES].try_into().unwrap();
-                let tail = if t + 1 == tasks { plan.rem } else { 0 };
-                plot_lanes(start, plan.seg, tail, p, m, &mut hist);
-                hist
+            || vec![0u64; WIDTH * HEIGHT],
+            |mut acc, h| {
+                acc.iter_mut().zip(&h).for_each(|(a, &c)| *a += c as u64);
+                acc
             },
         )
         .reduce_with(|mut a, b| {
@@ -245,7 +256,7 @@ fn density_histogram(
 // Colouring and output
 // ---------------------------------------------------------------------------------------------
 
-fn colorize(hist: &[u32], buffer: &mut [u32]) {
+fn colorize(hist: &[u64], buffer: &mut [u32]) {
     let packed: [u32; NUMCOL] = std::array::from_fn(|i| {
         let (r, g, b, _name) = COLOR_PALETTE[i];
         0xFF000000 | ((r as u32) << 16) | ((g as u32) << 8) | (b as u32)
@@ -290,9 +301,6 @@ fn parse_num(s: &str) -> Result<usize, String> {
     if n == 0 {
         return Err("'num' must be at least 1".into());
     }
-    if n > u32::MAX as usize {
-        return Err("'num' must fit in 32 bits (per-pixel counters are u32)".into());
-    }
     Ok(n)
 }
 
@@ -322,7 +330,7 @@ fn main() {
 
     // --- compute -------------------------------------------------------------------------
     let tasks = if num >= PARALLEL_THRESHOLD {
-        2 * rayon::current_num_threads()
+        (2 * rayon::current_num_threads()).max(num.div_ceil(MAX_POINTS_PER_TASK))
     } else {
         1
     };
